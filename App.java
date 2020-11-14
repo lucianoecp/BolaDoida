@@ -18,7 +18,6 @@ public class App extends JPanel
     {
         Random gerador = new Random();
         int numAleatorio = gerador.nextInt(12);
-        //getContentPane().setBackground(colors[numAleatorio]);
 
         return colors[numAleatorio];
     }
@@ -122,10 +121,8 @@ public class App extends JPanel
 
     public static void main(String[] args) throws InterruptedException
     {
-        JFrame area = new JFrame("Bola Maluca");
+        JFrame area = new JFrame("Bola Doida");
         App app = new App();
-        // app.setForeground(Color.BLUE);
-        // app.setBackground(Color.BLACK);
 
         area.add(app);
         area.setSize(640, 480);
