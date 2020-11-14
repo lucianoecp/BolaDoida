@@ -40,7 +40,9 @@ Para criação de Threads podemos:
 - Implementar a interface Runnable.
 
 Primeiro criamos uma classe que extende a classe java.lang.Thread, e dentro dessa classe sobrescrevemos a classe run(), a Thread começa dentro do metodo run() e chamamos o metodo start() para executa-la.
+
 Dentro da interface Runnable, tamnbem existe o metodo run(), e é dentro deste metodo que devemos colocar nossos procedimentos.
+
 A diferença entre extender a classe Thread e implementar a interface Runnable, é que se extendermos a classe Thread, não poderemos extender nenhuma outra classe, pois java não suporte multiplas heranças, no entanto, implementando a interface Runnable, ainda é possivel extender outra Classe.
 
 ```
@@ -72,4 +74,9 @@ public class Restaurante {
 }
 ```
 Ainda que abstrada, isso mostra que, enquanto o cozinheiro está preparando a comida, o atendente está atendendo novas mesas.
+
+## Conclusão 
+
+Ainda que seja util, não deve-se utilizar de qualquer maneira esta tecnica de processamento em paralelo com intuito de obter uma execução mais rapida, ou pode acontecer de processos necessitarem mais recursos e estes recursos não estarem disponiveis.
+
 
