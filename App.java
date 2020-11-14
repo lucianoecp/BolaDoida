@@ -41,12 +41,14 @@ public class App extends JPanel {
                         vx = 1;
                         alteraCorArena();
                         System.out.println("Colidiu! "+numColisoes++);
+                        size = (int) Math.floor(Math.random() * 50) + 30;
                 }
 
                 else if (x + vx > getWidth() - size) {
                         vx = -1;
                         alteraCorArena();
                         System.out.println("Colidiu! "+numColisoes++);
+                        size = (int) Math.floor(Math.random() * 50) + 30;
                 }
 
                 else if (y + vy < 0) {
@@ -54,12 +56,14 @@ public class App extends JPanel {
                         vy = 1;
                         alteraCorArena();
                         System.out.println("Colidiu! "+numColisoes++);
+                        size = (int) Math.floor(Math.random() * 50) + 30;
                 }
 
                 else if (y + vy > getHeight() - size) {
                         vy = -1;
                         alteraCorArena();
                         System.out.println("Colidiu! "+numColisoes++);
+                        size = (int) Math.floor(Math.random() * 50) + 30;
 
                 } else {
                         x += vx;
@@ -89,7 +93,7 @@ public class App extends JPanel {
                 while (true) {
                         app.moveBola(area);
                         app.repaint();
-                        Thread.sleep(5);
+                        Thread.sleep((int) Math.floor(Math.random() * 5)+1);
                 }
         }
 }
