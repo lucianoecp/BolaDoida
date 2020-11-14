@@ -34,5 +34,5 @@ Com o programa dessa maneira, teriamos alguns problemas, como:
 O outro garçom teria que esperar o primeiro garçom atender a mesa para poder atender outra mesa, e após levar o pedido, ele teria que esperar o cozinheiro preparar o pedido para poder entregar e então atender outra mesa, mas nenhum restaurante iria bem caso funcionasse dessa maneira, e por isso o uso de Thread para simular essas atividades que ocorrem paralelas, é muito util.
 
 Para criação de Threads precisamos de:
-1- Estender a classe Thread
-2- Implementar a interface Runnable
+- Estender a classe Thread
+- Implementar a interface Runnable
