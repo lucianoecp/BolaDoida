@@ -2,6 +2,9 @@
 
 ## Introdução
 MultiThreading em Java é uma caracteristica que permite que duas ou mais partes do programa executem concorrentemente para maior utilização do CPU.
+
+Imagine que temos o seguinte problema, em um programa que simula um restaurante.
+
 '''
 public void Restaurante(){
     Garcom garcom1 = new Garcom();
@@ -20,3 +23,6 @@ public void Restaurante(){
     
   }
 '''
+
+1- Estender a classe Thread
+2- Implementar a interface Runnable
