@@ -73,7 +73,6 @@ public class App extends JPanel
     @Override
     public void paint(Graphics g)
     {
-        //g.setColor(Color.BLUE);
         super.paint(g);
         g.fillOval(x,y,size,size);
     }
