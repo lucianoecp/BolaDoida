@@ -5,12 +5,11 @@ import java.util.Random;
 
 public class App extends JPanel
 {
-    private int numColisoes = 1;
+    private int numColisoes = 0;
 
     public static int size = (int) Math.floor(Math.random() * 50) + 30;
 
     static int vel = (int) Math.floor(Math.random() * 5) + 1;
-
 
     //Bola com parametros aleatorios:
     int x = (int) Math.floor(Math.random() * (getWidth()/2));
@@ -20,9 +19,14 @@ public class App extends JPanel
 
     boolean colidiu = false;
 
+    private void moveBolaDemo (JFrame frame)
+    {
+        x =  getWidth() - (size + 1);
+        y =  getHeight()  - (size + 1);
+    }
+
     private void moveBola (JFrame frame)
     {
-        Random gerador = new Random();
 
         if ((x + vx < 0) && !colidiu)
         {
@@ -31,7 +35,7 @@ public class App extends JPanel
             colidiu = true;
         }
 
-        else if ((x + vx > getWidth() - (size-1) ) && !colidiu)
+        else if ((x + vx > getWidth() - (size + 1) ) && !colidiu)
         {
             vx = -1;
             x = getWidth() - (size+1);
@@ -44,7 +48,7 @@ public class App extends JPanel
             colidiu = true;
         }
 
-        else if ((y + vy > getHeight()  - (size-1)) && !colidiu)
+        else if ((y + vy > getHeight() - (size + 1)) && !colidiu)
         {
             vy = -1;
             y = getHeight() - (size+1);
@@ -54,12 +58,11 @@ public class App extends JPanel
         {
             x += vx;
             y += vy;
-
         }
 
         if (colidiu)
         {
-            System.out.println("Número de colisões: "+(numColisoes++));
+            System.out.println("Número de colisões: "+(++numColisoes));
             alterarCores(frame);
             size = (int) Math.floor(Math.random() * 50) + 30;
             vel = (int) Math.floor(Math.random() * 5) + 1;
@@ -70,6 +73,7 @@ public class App extends JPanel
     @Override
     public void paint(Graphics g)
     {
+        //g.setColor(Color.BLUE);
         super.paint(g);
         g.fillOval(x,y,size,size);
     }
@@ -86,9 +90,10 @@ public class App extends JPanel
                 Color.ORANGE, Color.PINK, Color.RED, Color.WHITE, Color.YELLOW
         };
 
+        // Garantir dois numeros distintos
         while(n1==n2){
-            n1 = gerador.nextInt(12);
-            n2 = gerador.nextInt(12);
+            n1 = gerador.nextInt(13);
+            n2 = gerador.nextInt(13);
         }
 
         this.setBackground(colors[n1]);
@@ -97,7 +102,7 @@ public class App extends JPanel
 
     public static void main(String[] args) throws InterruptedException
     {
-        JFrame area = new JFrame("Bola Maluca");
+        JFrame area = new JFrame("Bola Doida");
         App app = new App();
 
         area.add(app);
@@ -113,4 +118,3 @@ public class App extends JPanel
         }
     }
 }
-
