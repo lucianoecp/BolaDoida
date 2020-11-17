@@ -7,86 +7,63 @@ public class App extends JPanel
 {
     private int numColisoes = 1;
 
-    // lista de cores:
-    private static final Color[] colors = {
-            Color.BLACK, Color.BLUE, Color.CYAN, Color.DARK_GRAY,
-            Color.GRAY, Color.GREEN, Color.LIGHT_GRAY, Color.MAGENTA,
-            Color.ORANGE, Color.PINK, Color.RED, Color.WHITE, Color.YELLOW
-    };
-
-    public Color sorteiaCor()
-    {
-        Random gerador = new Random();
-        int numAleatorio = gerador.nextInt(12);
-
-        return colors[numAleatorio];
-    }
-
-    public void alteraCorArena()
-    {
-        Random gerador = new Random();
-        int numAleatorio = gerador.nextInt(12);
-        this.getRootPane().setBackground(colors[numAleatorio]);
-
-    }
-
     public static int size = (int) Math.floor(Math.random() * 50) + 30;
+
+    static int vel = (int) Math.floor(Math.random() * 5) + 1;
 
 
     //Bola com parametros aleatorios:
-    int x = (int) Math.floor(Math.random() * 320 + size);
-    int y = (int) Math.floor(Math.random() * 260 + size);
+    int x = (int) Math.floor(Math.random() * (getWidth()/2));
+    int y = (int) Math.floor(Math.random() * (getHeight()/2));
     int vx = (int) Math.floor((Math.random() * 5) +1);
     int vy = (int) Math.floor((Math.random() * 5) +1);
+
+    boolean colidiu = false;
 
     private void moveBola (JFrame frame)
     {
         Random gerador = new Random();
 
-        if (x + vx < 0)
+        if ((x + vx < 0) && !colidiu)
         {
-            alterarCores(frame);
-            size = (int) Math.floor(Math.random() * 50) + 30;
-
             vx = 1;
-            System.out.println("Colidiu! "+numColisoes++);
-
-            
+            x = 0;
+            colidiu = true;
         }
 
-        else if (x + vx > getWidth() - size )
+        else if ((x + vx > getWidth() - (size-1) ) && !colidiu)
         {
-            alterarCores(frame);
-            size = (int) Math.floor(Math.random() * 50) + 30;
-
             vx = -1;
-            System.out.println("Colidiu! "+numColisoes++);
-
+            x = getWidth() - (size+1);
+            colidiu = true;
         }
 
-        else if (y + vy < 0) {
-
-            alterarCores(frame);
-            size = (int) Math.floor(Math.random() * 50) + 30;
-
+        else if ((y + vy < 0)  && !colidiu) {
             vy = 1;
-            System.out.println("Colidiu! "+numColisoes++);
-
+            y = 0;
+            colidiu = true;
         }
 
-        else if (y + vy > getHeight()  - size)
+        else if ((y + vy > getHeight()  - (size-1)) && !colidiu)
         {
-            alterarCores(frame);
-            size = (int) Math.floor(Math.random() * 50) + 30;
-
             vy = -1;
-            System.out.println("Colidiu! "+numColisoes++);
+            y = getHeight() - (size+1);
+            colidiu = true;
 
         }else
         {
             x += vx;
             y += vy;
 
+        }
+
+        if (colidiu)
+        {
+            System.out.println("Número de colisões: "+(numColisoes++));
+            alterarCores(frame);
+            size = (int) Math.floor(Math.random() * 50) + 30;
+            vel = (int) Math.floor(Math.random() * 5) + 1;
+            colidiu = false;
         }
     }
 
@@ -121,7 +98,7 @@ public class App extends JPanel
 
     public static void main(String[] args) throws InterruptedException
     {
-        JFrame area = new JFrame("Bola Doida");
+        JFrame area = new JFrame("Bola Maluca");
         App app = new App();
 
         area.add(app);
@@ -129,12 +106,12 @@ public class App extends JPanel
         area.setVisible(true);
         area.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
-
         while(true)
         {
             app.moveBola(area);
             app.repaint();
-            Thread.sleep((int) Math.floor(Math.random() * 5)+1);
+            Thread.sleep(vel);
         }
     }
 }
+
