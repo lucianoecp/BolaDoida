@@ -14,20 +14,16 @@ public class Movimento extends JPanel
     private int vy = (int) Math.floor((Math.random() * 5) +1);
     private boolean colidiu = false;
     private JFrame frame;
+
     public Movimento(JFrame frame)
     {
         this.frame = frame;
     }
+
     public int getVel(){
         return this.vel;
     }
-    public void moveBolaDemo(JFrame frame)
-    {
-        x =  getWidth() - (size + 1);
-        y =  getHeight()  - (size + 1);
-    }
-
-    public void moveBola (JFrame frame)
+    public void moveBola(JFrame frame)
     {
 
         if ((x + vx < 0) && !colidiu)
