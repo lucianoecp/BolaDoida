@@ -93,7 +93,14 @@ public class Movimento extends JPanel
                 Color.ORANGE, Color.PINK, Color.RED, Color.WHITE, Color.YELLOW
         };
 
-        
+       // Garantir dois numeros distintos
+        while(n1==n2){
+            n1 = gerador.nextInt(13);
+            n2 = gerador.nextInt(13);
+        }
+
+        this.setBackground(colors[n1]);
+        this.setForeground(colors[n2]); 
     }
     }
 
