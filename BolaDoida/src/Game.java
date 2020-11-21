@@ -49,7 +49,29 @@ public class Game extends JPanel
     }
     public int getNumColisoes()  { return numColisoes; }
 
-    
+    public void setCorFundo()
+    {
+        int num = (int) Math.floor(Math.random() * 6);
+
+        Color [] cores = {
+                Color.BLACK, Color.YELLOW, Color.WHITE,
+                Color.GRAY, Color.MAGENTA, Color.CYAN
+        };
+
+        this.setBackground(cores[num]);
+    }
+
+    public void setCorFigura()
+    {
+        int num = (int) Math.floor(Math.random() * 6);
+
+        Color [] cores = {
+                Color.BLUE, Color.DARK_GRAY, Color.RED,
+                Color.PINK, Color.ORANGE, Color.LIGHT_GRAY
+        };
+
+        this.setForeground(cores[num]);
+    }
 
     public void setDiametro() {
         this.diametro = (int) Math.floor(Math.random() * 40) + 30;;
